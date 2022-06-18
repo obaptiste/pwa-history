@@ -1,8 +1,9 @@
 import React from "react";
-import { Switch } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
 import About from "./About";
 import Home from "./Home";
+import Menu from "./Menu";
 
 const App: React.FC = () => {
   return (
@@ -16,21 +17,19 @@ const App: React.FC = () => {
           <li>
             <Link to="/About">About</Link>
           </li>
+          <li>
+            <Link to="/Menu">Menu</Link>
+          </li>
         </ul>
       </nav>
       <body>
-        <div>sdopjg'sdifgsdiohg;sdhgv;sdhv</div>
+        <div></div>
       </body>
-      <Switch>
-        <Route path="/About">
-          
-          <About/>
-
-        </Route>
-        <Route path="/">
-          {/* <Home /> */}
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path="/About" element={<About />} />
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/Menu" element={<Menu />}></Route>
+      </Routes>
     </Router>
   );
 };
