@@ -4,7 +4,9 @@ import { Types } from "./context/reducer";
 
 const Products = () => {
   const { state, dispatch } = useContext(AppContext);
+  const {products} = state;
 
+  const ProductCard
   return (
     <div>
       <button
