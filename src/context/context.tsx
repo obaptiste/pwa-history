@@ -1,10 +1,14 @@
-import React, { createContext, useReducer, Dispatch } from "react";
+import React, { createContext, useReducer, Dispatch, ReactNode } from "react";
 import { productReducer, shoppingCartReducer, ProductActions, ShoppingCartActions } from "./reducer";
 
 type ProductType = {
+  [x: string]: ReactNode;
   id: number;
   name: string;
   price: number;
+  description?:string;
+  quantity?: number;
+  category?: string;
 };
 
 type InitialStateType = {

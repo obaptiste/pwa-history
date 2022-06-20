@@ -14,10 +14,15 @@ export enum Types {
     Add = 'ADD_PRODUCT',
 }
 
-type ProductType = {
+export type Inventory = ProductType & Array<ProductType>
+
+export type ProductType = {
     id: number;
     name:string;
     price: number;
+    description?:string;
+    quantity?: number;
+    category?: string;
 }
 
 type ProductPayLoad = {
