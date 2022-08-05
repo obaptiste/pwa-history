@@ -3,26 +3,28 @@ import { AppContext } from "./context/context";
 import { Inventory, productReducer, ProductType,  Types } from "./context/reducer";
 
 
+export const ProductButton:FC = (props) => {
+  const { state, dispatch } = useContext(AppContext);
+
+  return (
+    <>
+      <button
+        onClick={() => {
+          dispatch({
+            type: Types.Add,
+          });
+        }}
+      >
+        click
+      </button>
+      
+    </>
+  );
+}
 const Products = () => {
   const { state, dispatch } = useContext(AppContext);
   const {products} = state;
   
-  const ProductButton:FC = (props) => {
-    return (
-      <>
-        <button
-          onClick={() => {
-            dispatch({
-              type: Types.Add,
-            });
-          }}
-        >
-          click
-        </button>
-        
-      </>
-    );
-  }
 
   const ProductsGrid: FC = (props) => {
     

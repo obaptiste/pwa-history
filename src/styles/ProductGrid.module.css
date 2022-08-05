@@ -1,0 +1,12 @@
+.productgrid {
+  display: -ms-grid;
+  display: grid;
+  width: 100%;
+  -ms-grid-columns: [left] 1fr [middle] 1fr [right] 1fr;
+      grid-template-columns: [left] 1fr [middle] 1fr [right] 1fr;
+}
+
+.productgrid .product_card {
+  max-width: 150px;
+}
+/*# sourceMappingURL=ProductGrid.module.css.map */

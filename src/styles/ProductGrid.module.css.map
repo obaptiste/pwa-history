@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACI,AAAA,YAAY,CAAC;EACT,OAAO,EAAC,IAAI;EACZ,KAAK,EAAE,IAAI;EAEX,qBAAqB,GAAG,IAAI,EAAE,GAAG,EAAE,MAAM,EAAE,GAAG,EAAE,KAAK,EAAE,GAAG;CAK7D;;AATD,AAKI,YALQ,CAKR,aAAa,CAAC;EACV,SAAS,EAAE,KAAK;CAEnB",
+    "sources": [
+        "ProductGrid.module.scss"
+    ],
+    "names": [],
+    "file": "ProductGrid.module.css"
+}

@@ -14,6 +14,7 @@ type ProductType = {
 type InitialStateType = {
   products: ProductType[];
   shoppingCart: number;
+ // shoppingCartProducts: ProductType[];  // products in shopping cart
 };
 
 const initialState = {
@@ -58,6 +59,7 @@ const initialState = {
     "quantity": 5
   }],
   shoppingCart: 0,
+ // shoppingCartProducts: [],
 };
 
 const AppContext = createContext<{
@@ -75,6 +77,7 @@ interface AppContextProps {
 const mainReducer = ({ products, shoppingCart }: InitialStateType, action: ProductActions | ShoppingCartActions) => ({
   products: productReducer(products, action),
   shoppingCart: shoppingCartReducer(shoppingCart, action),
+ // shoppingCartProducts: shoppingCartProductsReducer(products, shoppingCart, action),
 });
 
 const AppProvider: React.FC<AppContextProps> = ({ children }:AppContextProps) => {

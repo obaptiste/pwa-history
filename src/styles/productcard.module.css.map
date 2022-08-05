@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,YAAY,CAAC;EACT,SAAS,EAAE,KAAK;CACnB",
+    "sources": [
+        "productcard.module.scss"
+    ],
+    "names": [],
+    "file": "productcard.module.css"
+}
