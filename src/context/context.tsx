@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, Dispatch, ReactNode } from "react";
-import { productReducer, shoppingCartReducer, ProductActions, ShoppingCartActions } from "./reducer";
+import { productReducer, shoppingCartReducer, shoppingCartProductsReducer, ProductActions, ShoppingCartActions, ShoppingCartProductsActions, ShoppingCartProduct, ShoppingCartProducts } from "./reducer";
 
 type ProductType = {
   [x: string]: ReactNode;
@@ -11,10 +11,12 @@ type ProductType = {
   category?: string;
 };
 
+type ShoppingCart = [ShoppingCartProduct];
+
 type InitialStateType = {
   products: ProductType[];
   shoppingCart: number;
- // shoppingCartProducts: ProductType[];  // products in shopping cart
+  shoppingCartProducts: ShoppingCartProducts;  // products in shopping cart
 };
 
 const initialState = {
@@ -59,13 +61,14 @@ const initialState = {
     "quantity": 5
   }],
   shoppingCart: 0,
- // shoppingCartProducts: [],
+  shoppingCartProducts: [] as unknown as ShoppingCartProducts,
+  
 };
 
 const AppContext = createContext<{
   state: InitialStateType;
-  dispatch: Dispatch<ProductActions | ShoppingCartActions>;
-}>({
+  dispatch: Dispatch<ProductActions | ShoppingCartActions | ShoppingCartProductsActions>;
+ }>({
   state: initialState,
   dispatch: () => null,
 });
@@ -74,10 +77,10 @@ interface AppContextProps {
     children?: React.ReactNode;
 }
 
-const mainReducer = ({ products, shoppingCart }: InitialStateType, action: ProductActions | ShoppingCartActions) => ({
+const mainReducer = ({ products, shoppingCart, shoppingCartProducts }: InitialStateType, action: ProductActions | ShoppingCartActions | ShoppingCartProductsActions) => ({
   products: productReducer(products, action),
   shoppingCart: shoppingCartReducer(shoppingCart, action),
- // shoppingCartProducts: shoppingCartProductsReducer(products, shoppingCart, action),
+  shoppingCartProducts: shoppingCartProductsReducer(shoppingCartProducts, action),
 });
 
 const AppProvider: React.FC<AppContextProps> = ({ children }:AppContextProps) => {

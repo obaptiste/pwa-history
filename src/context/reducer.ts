@@ -1,6 +1,10 @@
+import React, { ReactNode } from "react";
+
+
 type ActionMap<M extends { [index: string]: any }> = {
 [Key in keyof M]: M[Key] extends undefined
 ? {
+    payload: any;
     type: Key;
 }: {
     type:Key;
@@ -14,7 +18,7 @@ export enum Types {
     Add = 'ADD_PRODUCT',
 }
 
-export type Inventory = ProductType & Array<ProductType>
+
 
 export type ProductType = {
     id: number;
@@ -24,6 +28,36 @@ export type ProductType = {
     quantity?: number;
     category?: string;
 }
+
+
+
+
+export type ShoppingCartProducts =  {
+    [x: string]: ReactNode,
+    id: number,
+    name: string
+    price: number;
+}[];
+
+
+///export type ShoppingCartProducts = Array<ShoppingCartProductItem>;
+
+const useBasket = () => {
+const [items, setItem] = React.useState<ShoppingCartProduct[]>([]);
+return  {
+    items,
+    setItem,
+    addItem: (product: ShoppingCartProduct) => {
+},}
+}
+
+
+
+
+export type ShoppingCartProduct =  ShoppingCartProducts[keyof ShoppingCartProducts];
+
+   
+
 
 type ProductPayLoad = {
     [Types.Create] : {
@@ -59,7 +93,7 @@ export const productReducer = (state: ProductType[], action:ProductActions | Sho
 }
 
 type ShoppingCartPayLoad = {
-    [Types.Add]: undefined;
+    [Types.Add]: undefined
 }
 
 export type ShoppingCartActions = ActionMap<ShoppingCartPayLoad>[keyof ActionMap<ShoppingCartPayLoad>];
@@ -73,3 +107,27 @@ export const shoppingCartReducer = (state:number, action:ProductActions | Shoppi
                 return state;
     }
 } 
+
+type ShoppingCartProductsPayload = {
+    [Types.Add]:  undefined
+}
+
+export type ShoppingCartProductsActions = ActionMap<ShoppingCartProductsPayload>[keyof ActionMap<ShoppingCartProductsPayload>];
+
+export const shoppingCartProductsReducer = (state:ShoppingCartProducts, action:ProductActions | ShoppingCartProductsActions) => {
+    switch (action.type) {
+        case Types.Add:
+            return [
+                ...state,
+                 {
+                    id: action.payload.id,
+                    name: action.payload.name,
+                    price: action.payload.price,
+                }
+            ]
+            default:
+                return state;
+            }
+        }
+        
+        

@@ -1,6 +1,6 @@
 import React, { FC, useContext } from "react";
 import { AppContext } from "./context/context";
-import { Inventory, productReducer, ProductType,  Types } from "./context/reducer";
+import { ShoppingCartProducts, productReducer, ProductType,  Types } from "./context/reducer";
 
 
 export const ProductButton:FC = (props) => {
@@ -12,6 +12,7 @@ export const ProductButton:FC = (props) => {
         onClick={() => {
           dispatch({
             type: Types.Add,
+            payload:props
           });
         }}
       >
