@@ -2,8 +2,11 @@ import React, { FC, useContext } from "react";
 import { AppContext } from "./context/context";
 import { ShoppingCartProducts, productReducer, ProductType,  Types } from "./context/reducer";
 
+interface productButtonProps {
+  product: ProductType
+} 
 
-export const ProductButton:FC = (props) => {
+export const ProductButton  = (product:productButtonProps) => {
   const { state, dispatch } = useContext(AppContext);
 
   return (
@@ -12,8 +15,9 @@ export const ProductButton:FC = (props) => {
         onClick={() => {
           dispatch({
             type: Types.Add,
-            payload:props
+            payload: product
           });
+          console.log(product.product.id)
         }}
       >
         click
@@ -41,7 +45,7 @@ const Products = () => {
                 <div>{product.description}</div>
                 <span>{product.price}</span>
               </div>
-              <ProductButton/>
+              <ProductButton product={product}/>
             </>
           );
         })}

@@ -120,9 +120,9 @@ export const shoppingCartProductsReducer = (state:ShoppingCartProducts, action:P
             return [
                 ...state,
                  {
-                    id: action.payload.id,
-                    name: action.payload.name,
-                    price: action.payload.price,
+                    id: action.payload.product.id,
+                    name: action.payload.product.name,
+                    price: action.payload.product.price,
                 }
             ]
             default:
