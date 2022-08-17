@@ -1,5 +1,13 @@
 import React, { createContext, useReducer, Dispatch, ReactNode } from "react";
-import { productReducer, shoppingCartReducer, shoppingCartProductsReducer, ProductActions, ShoppingCartActions, ShoppingCartProductsActions, ShoppingCartProduct, ShoppingCartProducts } from "./reducer";
+import { 
+  productReducer, 
+  shoppingCartReducer, 
+  shoppingCartProductsReducer, 
+  ProductActions, 
+  ShoppingCartActions, 
+  ShoppingCartProductsActions, 
+  ShoppingCartProducts 
+} from "./reducer";
 
 type ProductType = {
   [x: string]: ReactNode;
@@ -11,7 +19,6 @@ type ProductType = {
   category?: string;
 };
 
-type ShoppingCart = [ShoppingCartProduct];
 
 type InitialStateType = {
   products: ProductType[];
